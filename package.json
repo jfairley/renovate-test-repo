@@ -1,0 +1,52 @@
+{
+  "name": "renovate-test-repo",
+  "description": "A repo to test Renovate configuration",
+  "version": "0.0.0-dev",
+  "author": "Jeff Fairley",
+  "bugs": {
+    "url": "https://github.com/jfairley/renovate-test-repo/issues"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "dependencies": {
+    "typescript": "4.2.4"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+    "@commitlint/prompt-cli": "8.3.5",
+    "fixpack": "2.3.1",
+    "husky": "3.1.0",
+    "lint-staged": "9.5.0",
+    "prettier": "1.19.1"
+  },
+  "homepage": "https://github.com/jfairley/renovate-test-repo#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "license": "ISC",
+  "lint-staged": {
+    "package.json": [
+      "fixpack",
+      "git add"
+    ],
+    "*.{js,json,md,ts,yml}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jfairley/renovate-test-repo.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
