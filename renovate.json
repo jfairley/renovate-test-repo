@@ -1,8 +1,115 @@
 {
   "extends": [
     "config:base",
+    "docker:pinDigests",
     "group:recommended",
-    "group:definitelyTyped",
     "group:reactMonorepo"
-  ]
+  ],
+  "commitBody": "[skip release]",
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "automerge": true,
+      "datasources": ["docker", "orb"],
+      "groupName": "containers"
+    },
+    {
+      "automerge": true,
+      "depTypeList": ["devDependencies"],
+      "updateTypes": ["minor", "patch", "pin", "digest"]
+    },
+    {
+      "groupName": "dev-tools",
+      "matchPackageNames": [
+        "check-node-version",
+        "concurrently",
+        "create-ts-index",
+        "fixpack",
+        "husky",
+        "is-ci",
+        "lint-staged",
+        "nodemon",
+        "rimraf",
+        "ts-node",
+        "wait-on"
+      ],
+      "matchPackagePatterns": [
+        "commitlint",
+        "prettier",
+        "semantic-release",
+        "webpack"
+      ]
+    },
+    {
+      "automerge": true,
+      "groupName": "cypress",
+      "matchPackageNames": ["cypress"],
+      "matchPackagePrefixes": ["@cypress/", "cypress-"]
+    },
+    {
+      "automerge": true,
+      "groupName": "definitelyTyped",
+      "matchPackagePrefixes": ["@types/"],
+      "excludePackageNames": ["@types/react-table"]
+    },
+    {
+      "automerge": true,
+      "groupName": "enzyme",
+      "matchPackageNames": ["enzyme"],
+      "matchPackagePrefixes": ["enzyme-"]
+    },
+    {
+      "automerge": true,
+      "extends": ["group:fortawesome"]
+    },
+    {
+      "automerge": true,
+      "groupName": "graphql",
+      "matchPackagePatterns": ["apollo", "graphql"]
+    },
+    {
+      "automerge": true,
+      "groupName": "jest",
+      "matchPackageNames": ["@types/jest", "jest", "ts-jest"],
+      "matchPackagePrefixes": ["jest-"]
+    },
+    {
+      "automerge": true,
+      "extends": ["group:linters"]
+    },
+    {
+      "automerge": true,
+      "groupName": "styled-components",
+      "matchPackagePatterns": ["styled-components"]
+    },
+    {
+      "automerge": true,
+      "groupName": "supertest",
+      "matchPackageNames": ["supertest"]
+    },
+    {
+      "automerge": true,
+      "matchPackageNames": [
+        "@simbathesailor/use-what-changed",
+        "@welldone-software/why-did-you-render",
+        "fast-memoize",
+        "formik",
+        "lodash",
+        "micro-memoize",
+        "moment",
+        "tslib",
+        "typescript",
+        "uuid",
+        "validator",
+        "victory",
+        "w3c-keys",
+        "winston"
+      ],
+      "matchPackagePatterns": ["react"],
+      "excludePackageNames": ["react-table"]
+    }
+  ],
+  "separateMultipleMajor": true,
+  "timezone": "America/Denver",
+  "updateNotScheduled": false
 }
