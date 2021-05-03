@@ -1,3 +1,3 @@
 {
-  "extends": ["config:base", "group:recommended"]
+  "extends": ["config:base", "group:recommended", "group:reactMonorepo"]
 }
